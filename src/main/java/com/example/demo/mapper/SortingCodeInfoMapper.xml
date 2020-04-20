@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.aa.SortingCodeInfoDao">
+
+  <insert id="insert" parameterType="com.example.demo.aa.SortingCodeInfo">
+    insert into sorting_code_info (pno, src_province_code,
+      src_city_code, src_district_code, src_postal_code,
+      src_store_id, dst_province_code, dst_city_code,
+      dst_district_code, dst_postal_code, dst_store_id,
+      sorting_code, line_code, operator_type,
+      operator_id)
+    values (#{pno,jdbcType=VARCHAR}, #{srcProvinceCode,jdbcType=VARCHAR},
+      #{srcCityCode,jdbcType=VARCHAR}, #{srcDistrictCode,jdbcType=VARCHAR}, #{srcPostalCode,jdbcType=VARCHAR},
+      #{srcStoreId,jdbcType=VARCHAR}, #{dstProvinceCode,jdbcType=VARCHAR}, #{dstCityCode,jdbcType=VARCHAR},
+      #{dstDistrictCode,jdbcType=VARCHAR}, #{dstPostalCode,jdbcType=VARCHAR}, #{dstStoreId,jdbcType=VARCHAR},
+      #{sortingCode,jdbcType=VARCHAR}, #{lineCode,jdbcType=VARCHAR}, #{operatorType,jdbcType=INTEGER},
+      #{operatorId,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="batchInsert">
+    insert into sorting_code_info (pno, src_province_code,
+    src_city_code, src_district_code, src_postal_code,
+    src_store_id, dst_province_code, dst_city_code,
+    dst_district_code, dst_postal_code, dst_store_id,
+    sorting_code, line_code, operator_type,
+    operator_id)
+    VALUES
+    <foreach close=")" collection="records" index="index" item="item" open="(" separator="),(">
+      #{item.pno,jdbcType=VARCHAR}, #{item.srcProvinceCode,jdbcType=VARCHAR},
+      #{item.srcCityCode,jdbcType=VARCHAR}, #{item.srcDistrictCode,jdbcType=VARCHAR}, #{item.srcPostalCode,jdbcType=VARCHAR},
+      #{item.srcStoreId,jdbcType=VARCHAR}, #{item.dstProvinceCode,jdbcType=VARCHAR}, #{item.dstCityCode,jdbcType=VARCHAR},
+      #{item.dstDistrictCode,jdbcType=VARCHAR}, #{item.dstPostalCode,jdbcType=VARCHAR}, #{item.dstStoreId,jdbcType=VARCHAR},
+      #{item.sortingCode,jdbcType=VARCHAR}, #{item.lineCode,jdbcType=VARCHAR}, #{item.operatorType,jdbcType=INTEGER},
+      #{item.operatorId,jdbcType=VARCHAR}
+    </foreach>
+  </insert>
+
+</mapper>
