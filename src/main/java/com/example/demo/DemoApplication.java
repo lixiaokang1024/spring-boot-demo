@@ -9,7 +9,7 @@ import org.springframework.util.StringUtils;
 public class DemoApplication {
 
   public static void main(String[] args) {
-    // configCustomProperties();
+    configCustomProperties();
     SpringApplication.run(DemoApplication.class, args);
   }
 
@@ -18,12 +18,12 @@ public class DemoApplication {
    */
   private static void configCustomProperties() {
     String filePath = "classpath:/config/custom.properties";
-    String scl = System.getProperty("spring.config.location");
+    String scl = System.getProperty("spring.config.additional-location");
     if (StringUtils.hasText(scl)) {
       scl = String.format("%s,%s", filePath, scl);
     } else {
       scl = filePath;
     }
-    System.setProperty("spring.config.location", scl);
+    System.setProperty("spring.config.additional-location", scl);
   }
 }
