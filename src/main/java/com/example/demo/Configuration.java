@@ -23,6 +23,7 @@ public class Configuration {
     testComparator(cells);
     System.out.println(cells);//[Cell [x=5, y=1], Cell [x=3, y=2], Cell [x=2, y=3]]
 
+    //accessOrder:为true则move node to last
     LinkedHashMap map = new LinkedHashMap<String, String>(10, 0.75f, true) {
       //LinkedHashMap超出最大容量，删除head
       @Override
