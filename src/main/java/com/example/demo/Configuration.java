@@ -3,7 +3,6 @@ package com.example.demo;
 import com.example.demo.aa.Cell;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Configuration {
@@ -24,14 +23,11 @@ public class Configuration {
   public static void testComparator(List<Cell> cells) {
 
     System.out.println(cells);//[Cell [x=2, y=3], Cell [x=5, y=1], Cell [x=3, y=2]]
-    Collections.sort(cells, new Comparator<Cell>() {//此处创建了一个匿名内部类
-      @Override
-      public int compare(Cell o1, Cell o2) {
-        if (o1.getX() != o2.getX()) {
-          return o1.getX() - o2.getX();
-        }
-        return o2.getY() - o1.getY();
+    Collections.sort(cells, (o1, o2) -> {
+      if (o1.getX() != o2.getX()) {
+        return o1.getX() - o2.getX();
       }
+      return o2.getY() - o1.getY();
     });
   }
 }
