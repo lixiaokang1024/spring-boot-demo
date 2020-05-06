@@ -66,6 +66,7 @@ public class ControllerDemo {
     while (resultSet.next()) {
       System.out.println(resultSet.getString("pno"));
     }
+    connection.close();
     dataSourceAutoConfiguration.hashCode();
     dataSourceProperties.hashCode();
     sortingCodeInfoDao.insert(sortingCodeInfo);
