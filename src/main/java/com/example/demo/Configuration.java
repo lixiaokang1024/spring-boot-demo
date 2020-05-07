@@ -24,13 +24,23 @@ public class Configuration {
     System.out.println(cells);//[Cell [x=5, y=1], Cell [x=3, y=2], Cell [x=2, y=3]]
 
     //accessOrder:为true则move node to last
-    LinkedHashMap map = new LinkedHashMap<String, String>(10, 0.75f, true) {
+    LinkedHashMap map = new LinkedHashMap<String, String>(3, 0.75f, true) {
       //LinkedHashMap超出最大容量，删除head
       @Override
       protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {
-        return size() > 10;
+        return size() > 3;
       }
     };
+
+    map.put("a", "1");
+    map.put("b", "2");
+    map.put("c", "3");
+    System.out.println(map.size());
+    System.out.println(map.toString());
+    System.out.println(map.get("b"));
+    System.out.println(map.toString());
+    map.put("d", "4");
+    System.out.println(map.toString());
   }
 
   public static void testComparator(List<Cell> cells) {
