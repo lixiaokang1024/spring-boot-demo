@@ -13,7 +13,6 @@ public class CacheDemo<K, T> {
 
   public void put(K k, T val) {
     Node<K, T> node = new Node<>(k, val, null, null);
-    ;
     if (size == 0) {
       first = node;
     } else if (size == 1) {
