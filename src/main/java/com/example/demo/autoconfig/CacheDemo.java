@@ -8,6 +8,7 @@ public class CacheDemo<K, T> {
       cacheDemo.put(String.valueOf(i), String.valueOf(i));
       System.out.println(cacheDemo.toString());
     }
+    System.out.println(cacheDemo.get("9"));
   }
 
   public void put(K k, T val) {
@@ -35,7 +36,15 @@ public class CacheDemo<K, T> {
   }
 
   public T get(K k) {
-
+    Node<K, T> result;
+    if ((result = this.first) == null) {
+      return null;
+    }
+    do {
+      if (result.key.equals(k)) {
+        return result.item;
+      }
+    } while ((result = result.next) != null);
     return null;
   }
 
