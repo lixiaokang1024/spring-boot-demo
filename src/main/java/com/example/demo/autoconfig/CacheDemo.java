@@ -1,14 +1,18 @@
 package com.example.demo.autoconfig;
 
+import java.io.IOException;
+
 public class CacheDemo<K, T> {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
+    Thread.currentThread();
     CacheDemo<String, String> cacheDemo = new CacheDemo<>(5);
     for (int i = 1; i < 10; i++) {
       cacheDemo.put(String.valueOf(i), String.valueOf(i));
       System.out.println(cacheDemo.toString());
     }
     System.out.println(cacheDemo.get("9"));
+    System.in.read();
   }
 
   public void put(K k, T val) {
